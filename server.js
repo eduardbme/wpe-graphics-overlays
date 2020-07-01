@@ -126,6 +126,19 @@ io.on('connection', function(socket) {
 		io.sockets.emit("lowerthird:hideall");
 	});
 
+    /*
+     * Rolling text
+     */
+    socket.on("rollingtext:show", function(msg) {
+        io.sockets.emit("rollingtext:show", msg);
+    });
+    socket.on("rollingtext:hide", function(msg) {
+        io.sockets.emit("rollingtext:hide", msg);
+    });
+    socket.on("rollingtext:hideall", function(msg) {
+        io.sockets.emit("rollingtext:hideall", msg);
+    });
+
 	/*
 	 * 		Boxing
 	 */

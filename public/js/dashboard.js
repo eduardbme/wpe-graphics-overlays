@@ -26,28 +26,36 @@ app.controller('AppCtrl', ['$scope', '$location',
         });
 
         $scope.menu.push({
-            name: 'Grid',
-            url: '/grid',
+            name: 'Rolling Text',
+            url: '/rollingText',
             type: 'link',
-            icon: 'teal grid layout',
+            icon: 'yellow list layout',
             live: false,
         });
 
-        $scope.menu.push({
-            name: 'Roses',
-            url: '/roses',
-            type: 'link',
-            icon: 'yellow trophy',
-            live: false,
-        });
+        // $scope.menu.push({
+        //     name: 'Grid',
+        //     url: '/grid',
+        //     type: 'link',
+        //     icon: 'teal grid layout',
+        //     live: false,
+        // });
 
-        $scope.menu.push({
-            name: 'Boxing',
-            url: '/boxing',
-            type: 'link',
-            icon: 'olive users',
-            live: false,
-        });
+        // $scope.menu.push({
+        //     name: 'Roses',
+        //     url: '/roses',
+        //     type: 'link',
+        //     icon: 'yellow trophy',
+        //     live: false,
+        // });
+
+        // $scope.menu.push({
+        //     name: 'Boxing',
+        //     url: '/boxing',
+        //     type: 'link',
+        //     icon: 'olive users',
+        //     live: false,
+        // });
 
         $scope.menu.push({
             name: 'Football',
@@ -57,77 +65,77 @@ app.controller('AppCtrl', ['$scope', '$location',
             live: false,
         });
 
-        $scope.menu.push({
-            name: 'Rugby',
-            url: '/rugby',
-            type: 'link',
-            icon: 'orange soccer',
-        });
+        // $scope.menu.push({
+        //     name: 'Rugby',
+        //     url: '/rugby',
+        //     type: 'link',
+        //     icon: 'orange soccer',
+        // });
 
-        $scope.menu.push({
-            name: 'Darts',
-            url: '/darts',
-            type: 'link',
-            icon: 'red bullseye',
-            live: false,
-        });
+        // $scope.menu.push({
+        //     name: 'Darts',
+        //     url: '/darts',
+        //     type: 'link',
+        //     icon: 'red bullseye',
+        //     live: false,
+        // });
 
-        $scope.menu.push({
-            name: 'Swimming',
-            url: '/swimming',
-            type: 'link',
-            icon: 'blue life ring',
-            live: false,
-        });
+        // $scope.menu.push({
+        //     name: 'Swimming',
+        //     url: '/swimming',
+        //     type: 'link',
+        //     icon: 'blue life ring',
+        //     live: false,
+        // });
 
-        $scope.menu.push({
-            name: 'Basketball',
-            url: '/basketball',
-            type: 'link',
-            icon: 'orange clockwise rotated loading life ring',
-            live: false,
-        });
+        // $scope.menu.push({
+        //     name: 'Basketball',
+        //     url: '/basketball',
+        //     type: 'link',
+        //     icon: 'orange clockwise rotated loading life ring',
+        //     live: false,
+        // });
 
-        $scope.menu.push({
-            name: 'Archery',
-            url: '/archery',
-            type: 'link',
-            icon: 'bullseye',
-            live: false,
-        });
+        // $scope.menu.push({
+        //     name: 'Archery',
+        //     url: '/archery',
+        //     type: 'link',
+        //     icon: 'bullseye',
+        //     live: false,
+        // });
 
-        $scope.menu.push({
-            name: 'Badminton',
-            url: '/badminton',
-            type: 'link',
-            icon: 'green neuter',
-            live: false,
-        });
+        // $scope.menu.push({
+        //     name: 'Badminton',
+        //     url: '/badminton',
+        //     type: 'link',
+        //     icon: 'green neuter',
+        //     live: false,
+        // });
 
-        $scope.menu.push({
-            name: 'Tennis',
-            url: '/tennis',
-            type: 'link',
-            icon: 'olive circle',
-            live: false,
-        });
+        // $scope.menu.push({
+        //     name: 'Tennis',
+        //     url: '/tennis',
+        //     type: 'link',
+        //     icon: 'olive circle',
+        //     live: false,
+        // });
 
-        $scope.menu.push({
-            name: 'Netball',
-            url: '/netball',
-            type: 'link',
-            icon: 'soccer',
-            live: false,
-        });
+        // $scope.menu.push({
+        //     name: 'Netball',
+        //     url: '/netball',
+        //     type: 'link',
+        //     icon: 'soccer',
+        //     live: false,
+        // });
 
-        $scope.menu.push({
-            name: 'Waterpolo',
-            url: '/waterpolo',
-            type: 'link',
-            icon: 'blue tint',
-            live: false,
-            play: true
-        });
+        // $scope.menu.push({
+        //     name: 'Waterpolo',
+        //     url: '/waterpolo',
+        //     type: 'link',
+        //     icon: 'blue tint',
+        //     live: false,
+        //     play: true
+        // });
     }
 ]);
 
@@ -146,6 +154,10 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
             .when("/lowerThirds", {
                 templateUrl: '/admin/templates/lowerThirds.tmpl.html',
                 controller: 'lowerThirdsCGController'
+            })
+            .when("/rollingText", {
+                templateUrl: '/admin/templates/rollingText.tmpl.html',
+                controller: 'rollingTextCGController'
             })
             .when("/boxing", {
                 templateUrl: '/admin/templates/boxing.tmpl.html',
@@ -398,6 +410,78 @@ app.controller('lowerThirdsCGController', ['$scope', 'localStorageService', 'soc
         });
     }
 ]);
+
+
+app.controller('rollingTextCGController', ['$scope', 'localStorageService', 'socket',
+    function($scope, localStorageService, socket){
+
+        var stored = localStorageService.get('rolling_text');
+
+        const showLiveRollingText = $scope => {
+            $scope.menu.forEach(item => {
+                if (item.name === 'Rolling Text') {
+                    item.live = true;
+                }
+            });
+        };
+
+        const hideLiveRollingText = $scope => {
+            $scope.menu.forEach(item => {
+                if (item.name === 'Rolling Text') {
+                    item.live = false;
+                }
+            });
+        };
+
+        if(stored === null) {
+            $scope.queuedRollingText = [];
+        } else {
+            $scope.queuedRollingText = stored;
+        }
+
+        $scope.add = function(item) {
+            if (item.item) {
+                $scope.queuedRollingText.push(item);
+
+                $scope.rollingTextsForm.$setPristine();
+                $scope.rollingText = {};
+            }
+        };
+
+        $scope.remove = function(index){
+            $scope.queuedRollingText.splice(index, 1);
+        };
+
+        $scope.show = function(item) {
+            socket.emit("rollingtext:show", item);
+            showLiveRollingText($scope);
+        };
+
+        $scope.hide = function(item) {
+            socket.emit("rollingtext:hide", item);
+            hideLiveRollingText($scope);
+        };
+
+        $scope.edit = function(index) {
+            if (!$scope.queuedRollingText[index].edit) {
+                $scope.queuedRollingText[index].edit = true;
+            } else if ($scope.queuedRollingText[index].heading) {
+                $scope.queuedRollingText[index].edit = !$scope.queuedRollingText[index].edit;
+            }
+        };
+
+        $scope.hideall = function() {
+            socket.emit("rollingtext:hideall");
+            hideLiveRollingText($scope);
+        };
+
+
+        $scope.$on("$destroy", function() {
+            localStorageService.set('rolling_text', $scope.queuedRollingText);
+        });
+    }
+]);
+
 
 app.controller('gridCGController', ['$scope', '$log', 'localStorageService', 'socket',
     function($scope, $log, localStorageService, socket){

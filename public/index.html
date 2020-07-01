@@ -7,6 +7,7 @@
         <link href="/css/fonts/montserrat.css" rel="stylesheet" type="text/css">
         <link href="/css/theme.css" rel="stylesheet" type="text/css">
         <link href="/css/animation.css" rel="stylesheet" type="text/css">
+        <link href="/css/rolling-text.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
@@ -41,6 +42,14 @@
             <div class="lowerthird right bottom slide-right" ng-show="showRight">
                 <h1>{{right.heading}}</h1>
                 <h2 ng-show="right.subHeading">{{right.subHeading}}</h2>
+            </div>
+        </div>
+
+        <div ng-controller="rollingTextCtrl">
+            <div class="ticker-wrap" ng-show="showRollingText">
+                <div class="ticker">
+                    <div class="ticker__item" ng-repeat="item in items">{{item}}</div>
+                </div>
             </div>
         </div>
 

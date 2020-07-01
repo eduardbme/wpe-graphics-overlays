@@ -48,6 +48,36 @@ app.controller('lowerThirdsCtrl', ['$scope', 'socket',
     }
 ]);
 
+app.controller('rollingTextCtrl', ['$scope', 'socket',
+    function($scope, socket) {
+        socket.on("rollingtext:show", function(msg) {
+            if ($scope.showRollingText) {
+                $scope.showRollingText = false;
+            }
+            if ($scope.items === undefined) {
+                $scope.items = [];
+            }
+            $scope.items.push(msg.item);
+            $scope.showRollingText = true;
+        });
+        socket.on("rollingtext:hide", function(msg) {
+            let index = $scope.items.indexOf(msg.item);
+            if (index !== -1) {
+                $scope.items.splice(index, 1);
+            }
+            if ($scope.items.length == 0) {
+                $scope.showRollingText = false;
+            } else {
+                $scope.showRollingText = true;
+            }
+        });
+        socket.on("rollingtext:hideall", function(msg) {
+            $scope.showRollingText = false;
+            $scope.items = [];
+        });
+    }
+]);
+
 app.controller('archeryCtrl', ['$scope', 'socket',
     function($scope, socket){
         socket.on("archery", function (msg) {
