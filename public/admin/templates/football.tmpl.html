@@ -66,7 +66,7 @@
 
     <div class="ui grid center aligned">
         <div class="eight wide column">
-            <h3>Lancaster</h3>
+            <h3>Deportivo</h3>
             <h1>{{football.lancScore}}</h1>
             <div class="ui icon buttons">
                 <button class="ui green button" ng-click="football.lancScore = football.lancScore + 1;">
@@ -86,7 +86,7 @@
         </div>
 
         <div class="eight wide column">
-            <h3>York</h3>
+            <h3>Barcelona</h3>
             <h1>{{football.yorkScore}}</h1>
             <div class="ui icon buttons">
                 <button class="ui green button" ng-click="football.yorkScore = football.yorkScore + 1;">
@@ -118,7 +118,7 @@
             <div class="column">
                 <table class="ui striped table">
                     <thead>
-                        <th colspan="2">Lancaster</th>
+                        <th colspan="2">Deportivo</th>
                     </thead>
                     <tbody>
                         <tr ng-repeat="player in lancsPlayers">
@@ -136,7 +136,7 @@
             <div class="column">
                 <table class="ui striped table">
                     <thead>
-                        <th colspan="2">York</th>
+                        <th colspan="2">Barcelona</th>
                     </thead>
                     <tbody>
                         <tr ng-repeat="player in yorksPlayers">
@@ -156,7 +156,7 @@
     <div class="ui bottom attached tab segment" data-tab="settings">
         <div class="ui two column grid">
             <div class="column">
-                <h2>Lancaster</h2>
+                <h2>Deportivo</h2>
                 <form class="ui form">
                     <div class="field">
                         <label></label>
@@ -211,7 +211,7 @@
             </div>
 
             <div class="column">
-                <h2>York</h2>
+                <h2>Barcelona</h2>
                 <form class="ui form">
                     <div class="field">
                         <label></label>
@@ -227,7 +227,7 @@
                     </div>
                 </form>
 
-                <div class="ui icon green button" ng-click="addYorksPlayer()">
+                <div class="ui icon green button" ng-click="addBarcelonasPlayer()">
                     <i class="plus icon"></i> Add Player
                 </div>
 

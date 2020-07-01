@@ -170,9 +170,9 @@ app.controller('scoringCtrl', ['$scope', '$interval', '$http', 'socket',
         }
 
         //Intial fetch
-        fetchScore();
+        //fetchScore();
         // Start the timer
-        $interval(fetchScore, $scope.tickInterval);
+        //$interval(fetchScore, $scope.tickInterval);
     }
 ]);
 
