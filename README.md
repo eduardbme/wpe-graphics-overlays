@@ -2,6 +2,13 @@
 
 ## Launching Graphics
 
+### Docker
+```
+docker build -t wpe-graphics-overlays .
+docker run -d -p 3000:3000 wpe-graphics-overlays
+docker stop $(docker ps -a -q --filter ancestor=wpe-graphics-overlays --format="{{.ID}}")
+```
+
 ### Windows
 Double click
 ```
