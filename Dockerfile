@@ -7,8 +7,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN ls -la
-
 RUN npm i
 
 ENTRYPOINT ["node", "server"]
